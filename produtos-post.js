@@ -20,9 +20,9 @@ var client = http.request(config, function(res) {
 });
 
 var produto = {
-  'titulo': 'Nosso novo livrinho UHUUUUL',
+  'titulo': '',
   'preco': 130,
-  'descricao': 'Nosso novo livrinho por post'
+  'descricao': 'Nosso novo livrinho por post não adiciona'
 };
 
 client.end(JSON.stringify(produto));
