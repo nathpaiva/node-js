@@ -10,7 +10,7 @@ function produtos(app) {
       res.format({
         html: function() {
           // res.send(results);
-          res.render('produtos/lista',{lista: results});
+          res.render('produtos/lista', {lista: results});
         },
         json: function() {
           res.json(results);
@@ -25,23 +25,28 @@ function produtos(app) {
   app.get('/produtos', listaDeLivros);
 
   app.get('/produtos/add', function(req, res) {
-    res.render('produtos/form', {validationError: {}, produto: {}});
+    res.render('produtos/form', {
+      validationError: {},
+      produto: {}
+    });
   });
 
   app.post('/produtos', function(req, res) {
 
     var produto = req.body;
 
-    req.assert('titulo','O título deve ser preenchido').notEmpty();
-    req.assert('preco','Formato inválido').isFloat();
+    req.assert('titulo', 'O título deve ser preenchido').notEmpty();
+    req.assert('preco', 'Formato inválido').isFloat();
 
     var errors = req.validationErrors();
-
     if (errors) {
 
       res.format({
         html: function() {
-          res.render('produtos/form',{validationError: errors, produto: produto});
+          res.render('produtos/form', {
+            validationError: errors,
+            produto: produto
+          });
         },
         json: function() {
           res.json(errors);
@@ -51,11 +56,10 @@ function produtos(app) {
       return;
     }
 
-
     var connection = app.infra.connectionFactory();
     var produtosDAO = new app.infra.ProdutosDAO(connection);
     produtosDAO.save(produto, function(err, resust) {
-        res.redirect('/produtos');
+      res.redirect('/produtos');
     });
 
     connection.end();

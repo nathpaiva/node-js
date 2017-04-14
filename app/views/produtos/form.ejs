@@ -1,45 +1,46 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<head>
+  <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Form</title>
-</head>
+  </head>
 
-<body>
+  <body>
     <form action="/produtos" method="post">
-        <div class="error">
-            <div class='erros'>
-                <%if(validationError){%>
-                    <ul>
-                        <%for(var i=0;i<validationError.length;i++){%>
-                            <li>
-                                <%=validationError[i].param%> -
-                                    <%=validationError[i].msg%>
-                            </li>
-                            <%}%>
-                    </ul>
-                    <%}%>
-            </div>
+      <div class="error">
+        <div class='erros'>
+          <%if(validationError){%>
+            <ul>
+              <%for(var i=0;i<validationError.length;i++){%>
+                <li>
+                  <%=validationError[i].param%>
+                  -
+                  <%=validationError[i].msg%>
+                </li>
+              <%}%>
+            </ul>
+          <%}%>
         </div>
-        <div>
-            <label for="titulo">Título</label>
-            <input type="text" id="titulo" name="titulo" value="<%=produto.titulo%>" placeholder="Informe o titulo do Livro" />
-        </div>
-        <div>
-            <label for="preco">Preço</label>
-            <input type="text" id="preco" name="preco" value="<%=produto.preco%>" placeholder="120.05" />
-        </div>
-        <div>
-            <label for="descricao">Descrição</label>
-            <textarea cols="20" rows="10" id="descricao" name="descricao" placeholder="Fale sobre o livro"><%=produto.descricao%></textarea>
-        </div>
+      </div>
+      <div>
+        <label for="titulo">Título</label>
+        <input type="text" id="titulo" name="titulo" value="<%=produto.titulo%>" placeholder="Informe o titulo do Livro"/>
+      </div>
+      <div>
+        <label for="preco">Preço</label>
+        <input type="text" id="preco" name="preco" value="<%=produto.preco%>" placeholder="120.05"/>
+      </div>
+      <div>
+        <label for="descricao">Descrição</label>
+        <textarea cols="20" rows="10" id="descricao" name="descricao" placeholder="Fale sobre o livro"><%=produto.descricao%></textarea>
+      </div>
 
-        <input type="submit" value="Gravar" />
+      <input type="submit" value="Gravar"/>
     </form>
 
-</body>
+  </body>
 
 </html>
