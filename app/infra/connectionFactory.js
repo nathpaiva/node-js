@@ -1,14 +1,23 @@
 var mysql = require('mysql');
 
 var _connectionMYSQL = function() {
-  return mysql.createConnection({
+  var config = {
     host: 'localhost',
     user: 'root',
-    password: '',
-    database: 'alura_casadocodigo'
-  });
+    password: ''
+  };
+
+  if (!process.env.NODE_ENV) {
+    config.database = 'alura_casadocodigo';
+  }
+
+  if (process.env.NODE_ENV === 'test') {
+    config.database = 'alura_casadocodigo_test';
+  }
+
+  return mysql.createConnection(config);
 }
 
-module.exports = function () {
+module.exports = function() {
   return _connectionMYSQL;
 };

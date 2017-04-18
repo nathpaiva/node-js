@@ -1,12 +1,14 @@
 function produtos(app) {
 
-  var listaDeLivros = function(req, res) {
+  var listaDeLivros = function(req, res, next) {
     // express load libera dessa forma as coisas que são carregadas nele
     var connection = app.infra.connectionFactory();
     var produtosDAO = new app.infra.ProdutosDAO(connection);
 
     produtosDAO.lista(function(err, results) {
-
+      if (err) {
+        return next(err);
+      }
       res.format({
         html: function() {
           // res.send(results);
@@ -15,7 +17,7 @@ function produtos(app) {
           });
         },
         json: function() {
-          // console.log('OI.... ');
+          console.log('OI....');
           res.json(results);
         },
       });

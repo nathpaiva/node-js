@@ -3,6 +3,15 @@ var request = require('supertest')(express);
 
 describe('#Produtos Controller', function() {
 
+  beforeEach(function(done) {
+    var conn = express.infra.connectionFactory();
+    conn.query('delete from livros', function(ex, result) {
+      if (!ex) {
+        done();
+      }
+    });
+  });
+
   it('#Lista o Json de produto', function(done) {
     request.get('/produtos')
       .set('Accept', 'application/json')
