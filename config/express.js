@@ -9,8 +9,8 @@ function config() {
   var app = express();
 
   // criar variaveis para o express, para passar para o sistema
-  app.set('view engine','ejs');
-  app.set('views','./app/views');
+  app.set('view engine', 'ejs');
+  app.set('views', './app/views');
 
   app.use(bodyParser.urlencoded({extended: true}));
   app.use(bodyParser.json());
@@ -22,6 +22,5 @@ function config() {
 
   return app;
 }
-
 
 module.exports = config;
