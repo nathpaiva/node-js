@@ -1,6 +1,6 @@
 function produtos(app) {
 
-  var listaDeLivros = function(req, res, next) {
+  app.get('/produtos', function(req, res, next) {
     // express load libera dessa forma as coisas que são carregadas nele
     var connection = app.infra.connectionFactory();
     var produtosDAO = new app.infra.ProdutosDAO(connection);
@@ -25,9 +25,7 @@ function produtos(app) {
     });
 
     connection.end();
-  };
-
-  app.get('/produtos', listaDeLivros);
+  });
 
   app.get('/produtos/add', function(req, res) {
     res.render('produtos/form', {
