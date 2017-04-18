@@ -14,7 +14,7 @@ function produtos(app) {
         },
         json: function() {
           res.json(results);
-        }
+        },
       });
 
     });
@@ -27,7 +27,7 @@ function produtos(app) {
   app.get('/produtos/add', function(req, res) {
     res.render('produtos/form', {
       validationError: {},
-      produto: {}
+      produto: {},
     });
   });
 
@@ -43,14 +43,14 @@ function produtos(app) {
 
       res.format({
         html: function() {
-          res.render('produtos/form', {
+          res.status(400).render('produtos/form', {
             validationError: errors,
-            produto: produto
+            produto: produto,
           });
         },
         json: function() {
-          res.json(errors);
-        }
+          res.status(400).json(errors);
+        },
       });
 
       return;
