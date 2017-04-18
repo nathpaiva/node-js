@@ -10,9 +10,12 @@ function produtos(app) {
       res.format({
         html: function() {
           // res.send(results);
-          res.render('produtos/lista', {lista: results});
+          res.render('produtos/lista', {
+            lista: results
+          });
         },
         json: function() {
+          // console.log('OI.... ');
           res.json(results);
         },
       });
