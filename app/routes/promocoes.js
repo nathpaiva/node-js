@@ -23,7 +23,7 @@ function promocoes(app) {
 
   app.post('/promocoes', function(req, res) {
     var produto = req.body;
-    console.log('produto', produto);
+    app.get('io').emit('novaPromocão', produto);
     res.redirect('promocoes/add');
   });
 
